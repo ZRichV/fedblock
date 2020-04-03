@@ -14,7 +14,7 @@
 <body>
 <nav>
     <div class="nav-wrapper blue darken-3">
-        <a href="{{ url_for('homepage') }}" class="brand-logo title-style">Contract Publisher</a>
+        <a href="{{ url_for('homepage') }}" class="brand-logo title-style">账户选择</a>
     </div>
 </nav>
 <div class="container">
@@ -23,10 +23,10 @@
             <ul class="collection">
                 <li class="collection-item row">
                     <div class="col s2">
-                            <h5 class="title">ID</h5>
+                            <h5 class="title">序号</h5>
                         </div>
                         <div class="col s8">
-                            <h5 class="title center">Account</h5>
+                            <h5 class="title center">账户</h5>
                         </div>
                         <div class="col s2">
                             <h5 class="title"></h5>
@@ -42,8 +42,7 @@
                         </div>
                         <div class="col s2">
                             <form action="{{ url_for('choose_account',account_no=account) }}" method="POST">
-                                <button name="action" class="waves-effect waves-light btn-large blue darken-3">Choose
-                                    Account
+                                <button name="action" class="waves-effect waves-light btn-large blue darken-3">选取
                                 </button>
                             </form>
                         </div>

@@ -14,9 +14,9 @@
 <body>
 <nav>
     <div class="nav-wrapper blue darken-3">
-        <a href="{{ url_for('homepage') }}" class="brand-logo title-style">Contract Publisher</a>
+        <a href="{{ url_for('homepage') }}" class="brand-logo title-style">合约发布</a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <li><a href="{{ url_for('display') }}">View Models</a></li>
+            <li><a href="{{ url_for('display') }}">查看模型</a></li>
         </ul>
     </div>
 </nav>
@@ -26,14 +26,14 @@
     <div class="section no-pad-bot">
       <div class="container">
         <br><br>
-        <h1 class="header center teal-text text-lighten-2">Learning Contract</h1>
+        <h1 class="header center teal-text text-lighten-2">联邦学习智能合约</h1>
           {% if deployed %}
         <div class="row center">
           <h5 class="header col s12 light card-panel hoverable">{{ address }}</h5>
         </div>
           {% endif %}
         <form action="{{ url_for('homepage') }}" method="POST" class="row center">
-            <button name="action" class="waves-effect waves-light btn blue darken-3">Deploy</button>
+            <button name="action" class="waves-effect waves-light btn blue darken-3">部署合约</button>
         </form>
         <br><br>
       </div>
@@ -42,7 +42,7 @@
 
 {% if deployed %}
     <div class="col s12 m7 center">
-    <h3 class="header">Contract Account</h3>
+    <h3 class="header">智能合约账户</h3>
     <div class="card horizontal card-panel hoverable">
         <div class="row">
       <div class="card-image col s3">
@@ -50,11 +50,11 @@
       </div>
       <div class="card-stacked col s9">
         <div class="card-content">
-          <p>The contract was deployed at</p><p>{{ address }}</p>
-            <p>Scan the QR code to receive the contract address</p>
+          <p>部署智能合约的账户：</p><p>{{ address }}</p>
+            <p>扫描二维码可以查看链账户地址</p>
         </div>
         <div class="card-action">
-          <a href="{{ url_for('choose_account') }}">Choose Account</a>
+          <a href="{{ url_for('choose_account') }}">选取其他账户</a>
         </div>
       </div>
     </div>

@@ -7,6 +7,7 @@ import matplotlib.pyplot as plt
 from model import Model
 import pickle
 from keras.datasets import mnist
+import os
 
 MAX_CLIENTS = 2
 
@@ -129,22 +130,31 @@ def ClientUpdate(model_filename, output_file):
 
 ## Write or import
 def get_model_filename(i):
-    files = {}
-    #files[0] = "0x6c156B11819f05Ad79794B008753729466D3Ccd5"
-    #files[1] = "0xB7D2d5d7824e4ee393c4D83B9014CFb0b66078d5"
-    files[0] = "0x62208204bdfd8AAd6A3d638C6B38E2622472a29A"
-    files[1] = "0x3297e099F154642F01Bd9DFD3FDb881A951Cc599"
+    files = []
+    # files[0] = "0x4510e8826c1979007CA279EA4597f1E725f818d5"
+    # files[1] = "0x1268835cFD9189fC1Bc0eb68748b0fa0e179C5f8"
+    #files[0] = "0x62208204bdfd8AAd6A3d638C6B38E2622472a29A"
+    #files[1] = "0x3297e099F154642F01Bd9DFD3FDb881A951Cc599"
+    file_dir = "../organization/models/"
 
-    return "../organization/models/" + files[i]
+    for x, j, k in os.walk(file_dir):
+        files.append(k)
+
+    i = int(i)
+    print(type(i))
+    print(files[0][i])
+    return "../organization/models/" + str(files[0][i])
+    #return "../organization/models/" + files[i]
 
 
 def FederatedAveraging(output_file):
     WEIGHTS = [np.zeros_like(v) for v in models[0].var_list]
     clients = np.random.permutation(MAX_CLIENTS)[:np.random.randint(1, MAX_CLIENTS + 1)]
+    print(clients)
 
     for client in clients:
         model_filename = get_model_filename(client)
-        # print(model_filename)
+        print(model_filename)
         weight = pickle.load(open(model_filename, "rb"))
         for v in range(len(models[0].var_list)):
             WEIGHTS[v] = WEIGHTS[v] + (weight[v] / len(clients))

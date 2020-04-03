@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Decentralized Voting App</title>
+    <title>Fedblock</title>
 
     <link href="{{ url_for('static', filename='css/materialize.min.css') }}" rel="stylesheet">
     <link href="{{ url_for('static', filename='css/home_styles.css') }}" rel="stylesheet">
@@ -14,7 +14,7 @@
 <body>
 <nav>
     <div class="nav-wrapper blue-grey darken-1">
-        <a href="{{ url_for('homepage') }}" class="brand-logo title-style">Federated Learning</a>
+        <a href="{{ url_for('homepage') }}" class="brand-logo title-style">联邦学习</a>
     </div>
 </nav>
 <div class="container">
@@ -23,10 +23,10 @@
             <ul class="collection">
                 <li class="collection-item row">
                     <div class="col s2">
-                            <h5 class="title">ID</h5>
+                            <h5 class="title">序号</h5>
                         </div>
                         <div class="col s8">
-                            <h5 class="title center">Account</h5>
+                            <h5 class="title center">账户</h5>
                         </div>
                         <div class="col s2">
                             <h5 class="title"></h5>
@@ -42,8 +42,7 @@
                         </div>
                         <div class="col s2">
                             <form action="{{ url_for('homepage',account_no=account) }}" method="POST">
-                                <button name="action" class="waves-effect waves-light btn-large blue-grey darken-1">Choose
-                                    Account
+                                <button name="action" class="waves-effect waves-light btn-large blue-grey darken-1">选取
                                 </button>
                             </form>
                         </div>

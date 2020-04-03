@@ -11,7 +11,7 @@
 <body>
 <nav>
     <div class="nav-wrapper blue-grey darken-1">
-        <a href="{{ url_for('homepage') }}" class="brand-logo title-style">Federated Learning</a>
+        <a href="{{ url_for('homepage') }}" class="brand-logo title-style">联邦学习</a>
     </div>
 </nav>
 <div class="container">
@@ -20,7 +20,7 @@
     <div class="col s12 m6">
       <div class="card blue-grey darken-1 card-panel hoverable">
         <div class="card-content white-text">
-          <span class="card-title">Account Now You Chosen</span>
+          <span class="card-title">现在选择的账户</span>
           <p>{{ account }}</p>
         </div>
       </div>
@@ -29,48 +29,40 @@
 
     <div class="row">
         <div class="col s12">
-            <h5>Adding stuff to IPFS</h5>
+            <h5>将文件添加至IPFS中</h5>
         </div>
         <form action="{{ url_for('addFileToIPFS') }}" method="POST" enctype='multipart/form-data' class="col s12">
             <div class="row">
                 <div class="input-field col s2">
-                    <input placeholder="Model Number" name="model_number" id="model_number" type="number"
+                    <input placeholder="模型序号" name="model_number" id="model_number" type="number"
                            class="validate">
                     <label for="first_name"></label>
                 </div>
                 <div class="file-field input-field col s7">
-                    <div class="btn col s2 blue-grey darken-1">
-                        <span>File</span>
-                        <input type="file" name="file">
+                    <div class="btn col s3 blue-grey darken-1">
+                        <span>文件</span>
+                        <input type="file" name="file" id="file" onchange="document.getElementById('filename').value=this.files[0].name">
                     </div>
-                    <div class="file-path-wrapper col s10">
-                        <input class="file-path validate"
-                               placeholder="Filename"
-                               name="filename">
+                    <div class="file-path-wrapper col s9">
+                        <input class="file-path validate" placeholder="文件名称" name="filename" id="filename">
                     </div>
                 </div>
-                <button name="action" class="waves-effect waves-light btn-large blue-grey darken-1 col s3">Add Transaction
+                <button name="action" class="waves-effect waves-light btn-large blue-grey darken-1 col s3">传送文件
                 </button>
             </div>
         </form>
     </div>
     <div class="row">
-        <form action="{{ url_for('train') }}" method="POST">
-            <button name="action" class="waves-effect waves-light btn-large blue-grey darken-1 col s2">Local Train
+        <form action="{{ url_for('checkpoint_model_pull') }}" method="POST">
+            <button name="action" class="waves-effect waves-light btn-large blue-grey darken-1 col s2">拉取模型
             </button>
         </form>
-        <div class="col s10">
-            <h6>Train the local network</h6>
-        </div>
     </div>
     <div class="row">
-        <form action="{{ url_for('checkpoint_model_pull') }}" method="POST">
-            <button name="action" class="waves-effect waves-light btn-large blue-grey darken-1 col s2">Pull Model
+        <form action="{{ url_for('train') }}" method="POST">
+            <button name="action" class="waves-effect waves-light btn-large blue-grey darken-1 col s2">本地训练
             </button>
         </form>
-        <div class="col s10">
-            <h6>Pull Model from Organization</h6>
-        </div>
     </div>
 </div>
 <div class="row">
@@ -99,7 +91,7 @@
     <div class="row">
         <div class="col s6 offset-s3">
             <p>
-            <center>Model Accuracy of client models</center>
+            <center>本地模型训练后准确率</center>
             </p>
             {% if accuracy %}
                 <h5><center>{{ accuracy }}</center></h5>
@@ -107,5 +99,10 @@
         </div>
     </div>
 </div>
+<script>
+function loadFile(file){
+    $("#filename").html(file.name);
+}
+</script>
 </body>
 </html>

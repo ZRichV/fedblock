@@ -13,7 +13,7 @@
 </body>
 <nav>
     <div class="nav-wrapper blue darken-3">
-        <a href="{{ url_for('homepage') }}" class="brand-logo title-style">Contract Publisher</a>
+        <a href="{{ url_for('homepage') }}" class="brand-logo title-style">模型发布</a>
     </div>
 </nav>
 <div class="container">
@@ -23,24 +23,24 @@
 
     <div class="col s4 offset s4">
         <h5 class="card-panel hoverable">
-            <center>Functions</center>
+            <center>功能</center>
         </h5>
     </div>
     <br>
     <div class="row">
         <form action="{{ url_for('publish') }}" method="POST" class="col s4 offset-s4">
-            <button name="action" class="waves-effect waves-light btn blue darken-3 col s12">Publish Initial Model
+            <button name="action" class="waves-effect waves-light btn blue darken-3 col s12">发布初始模型
             </button>
         </form>
     </div>
     <div class="row">
         <form action="{{ url_for('download') }}" method="POST" class="col s4 offset-s4">
-            <button name="action" class="waves-effect waves-light btn blue darken-3 col s12">Download Models</button>
+            <button name="action" class="waves-effect waves-light btn blue darken-3 col s12">下载全局模型</button>
         </form>
     </div>
     <div class="row">
         <form action="{{ url_for('average') }}" method="POST" class="col s4 offset-s4">
-            <button name="action" class="waves-effect waves-light btn blue darken-3 col s12">Average Models</button>
+            <button name="action" class="waves-effect waves-light btn blue darken-3 col s12">模型联合</button>
         </form>
     </div>
     <br>
@@ -48,20 +48,20 @@
     <br>
     <div class="col s4 offset s4">
         <h5>
-            <center>Model List</center>
+            <center>模型列表</center>
         </h5>
     </div>
     <div class="row">
         <div class="col s12">
             <ul class="collection">
-            <h5 class="col s6">Account</h5>
-            <h5 class="col s6">Information</h5>
+            <h5 class="col s6">账户</h5>
+            <h5 class="col s6">信息</h5>
                 {% for file in fileData %}
                     <li class="collection-item row">
                         <h6 class="col s6"><strong>{{ file.accountNumber }}</strong></h6>
-                        <h6 class="col s6"><strong>File Name </strong> {{ file.fileName }}</h6>
-                        <h6 class="col s6"><strong>IPFS Hash </strong>{{ file.ipfsHash }}</h6>
-                        <h6 class="col s6"><strong>Model Number</strong> {{ file.modelNumber }}</h6>
+                        <h6 class="col s6"><strong>文件名 </strong> {{ file.fileName }}</h6>
+                        <h6 class="col s6"><strong>IPFS哈希 </strong>{{ file.ipfsHash }}</h6>
+                        <h6 class="col s6"><strong>模型序号</strong> {{ file.modelNumber }}</h6>
                     </li>
                 {% endfor %}
             </ul>
